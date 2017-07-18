@@ -1,0 +1,25 @@
+
+[
+{
+    "model": "traffic_fine.trafficfinecity",
+    "pk": 1,
+    "fields": {
+        "name": "Delhi",
+        "icon": "traffic_fine/city/delhi.jpg",
+        "order": 1,
+        "created_at": "2017-07-02T18:47:00.932Z",
+        "updated_at": "2017-07-03T07:43:10.323Z"
+    }
+},
+{
+    "model": "traffic_fine.trafficfinecity",
+    "pk": 2,
+    "fields": {
+        "name": "Mumbai",
+        "icon": "traffic_fine/city/mumbai.jpg",
+        "order": 2,
+        "created_at": "2017-07-02T18:47:10.970Z",
+        "updated_at": "2017-07-03T07:43:52.675Z"
+    }
+}
+]

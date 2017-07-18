@@ -1,0 +1,41 @@
+{% if seo %}
+  {% if seo.meta_description %}
+      <title>{{ seo.title }}</title>
+      <meta name="description" content="{{ seo.meta_description }}" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@NyaayaIN" />
+      <meta name="twitter:title" content="{{ seo.title }}" />
+    {% if seo.canonical %}
+      <link rel="canonical" href="http://{{ request.get_host }}{{ seo.canonical }}" />
+    {% endif %}
+    {% if seo.og_title %}
+      <meta property="og:title" content="{{ seo.og_title }}" />
+    {% else %}
+      <meta property="og:title" content="{{ seo.title }}" />
+    {% endif %}
+    {% if seo.og_type %}
+      <meta property="og:type" content="{{ seo.og_type }}" />
+    {% endif %}
+    {% if seo.canonical %}
+      <meta property="og:url" content="http://{{ request.get_host }}{{ seo.canonical}}" />
+    {% endif %}
+    {% if seo.og_description %}
+      <meta property="og:description" content="{{ seo.og_description}}" />
+      <meta name="twitter:description" content="{{ seo.og_description}}" />
+    {% else %}
+      <meta property="og:description" content="{{ seo.meta_description}}" />
+      <meta name="twitter:description" content="{{ seo.meta_description}}" />
+    {% endif %}
+    {% if seo.og_image %}
+      <meta property="og:image" content="{{ seo.og_image }}" />
+      <meta name="twitter:image" content="{{ seo.og_image }}" />
+    {% endif %}
+  {% else %}
+    {% if seo.title %}
+      <title>{{ seo.title }}</title>
+      <meta name="description" content="{{ seo.description }}" />
+    {% endif %}
+  {% endif %}
+{% else %}
+  <title>Nyaaya.in | India's Laws Explained</title>
+{% endif %}

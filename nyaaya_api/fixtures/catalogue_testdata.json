@@ -1,0 +1,67 @@
+[
+
+{
+    "model": "law.webdoc",
+    "pk": 3,
+    "fields": {
+        "frbr_url": "http://nyaaya.in/law/480/the-central-vigilance-commission-act-2003/",
+        "document_id": 480,
+        "short_title": "The Central Vigilance Commission Act, 2003",
+        "long_title": "",
+        "number": 48,
+        "date": "2017-07-11",
+        "year": 2017,
+        "subtype": "",
+        "locality": "Karnataka",
+        "locality_id": 235,
+        "category": "Accountability laws",
+        "category_id": 12,
+        "tags": "",
+        "document_created_at": "2017-07-11T07:28:38Z",
+        "document_updated_at": "2017-07-11T07:28:40Z",
+        "is_deleted": false,
+        "is_draft": false,
+        "is_stub": false,
+        "created_at": "2017-07-11T07:28:45.203Z",
+        "updated_at": "2017-07-11T08:57:26.664Z"
+    }
+},
+{
+    "model": "law.webdoc",
+    "pk": 4,
+    "fields": {
+        "frbr_url": "http://nyaaya.in/law/777/insolvency-and-bankruptcy-code-2016/",
+        "document_id": 777,
+        "short_title": "Insolvency And Bankruptcy Code, 2016",
+        "long_title": "",
+        "number": 77,
+        "date": "2017-07-11",
+        "year": 2017,
+        "subtype": "",
+        "locality": "Karnataka",
+        "locality_id": 236,
+        "category": "Banking and Finance",
+        "category_id": 2,
+        "tags": "",
+        "document_created_at": "2017-07-11T08:41:01Z",
+        "document_updated_at": "2017-07-11T08:41:03Z",
+        "is_deleted": false,
+        "is_draft": false,
+        "is_stub": false,
+        "created_at": "2017-07-11T08:41:12.815Z",
+        "updated_at": "2017-07-11T08:56:37.572Z"
+    }
+},
+{
+    "model": "law.docexplainerblock",
+    "pk": 1,
+    "fields": {
+        "webdoc": 3,
+        "section_id": "intro",
+        "text": "This is some random text added for testing",
+        "xml_text": "Well, yeah this is some random XML text too. ",
+        "created_at": "2017-07-06T09:37:53.840Z",
+        "updated_at": "2017-07-13T07:02:04.171Z"
+    }
+}
+]
