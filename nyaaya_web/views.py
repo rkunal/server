@@ -152,15 +152,10 @@ def guide_intro(request, doc_id, slug=None):
 
     return render(request, 'nyaaya_web/index.html', {'SHAREDDATA': json.dumps(shared_data), 'seo': seo})
 
-def apps_lang(request, toc_slug=None):
-    return apps(request,toc_slug,'hi')
 
-def apps(request,toc_slug=None,lang=None):
+def apps(request,toc_slug=None):
     seo = {}
-    if lang is not None:
-        appResponse = AppPage.as_view({'get': 'getlang'})(request,toc_slug,lang).render().content
-    else:
-        appResponse = AppPage.as_view({'get': 'list'})(request,toc_slug).render().content
+    appResponse = AppPage.as_view({'get': 'list'})(request,toc_slug).render().content
     if appResponse is  None or not len(appResponse):
         raise Http404("Not Found")
     try:

@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from solid_i18n.urls import solid_i18n_patterns
+from nyaaya_web import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('nyaaya_api.urls')),
     url(r'^', include('nyaaya_web.urls')),
 ]
+urlpatterns += solid_i18n_patterns(
+     url(r'^law-explainers/$', views.law_explainers, name='law-explainers'),
+     url(r'^(?P<toc_slug>[\-a-z0-9].+)/$', views.apps, name='app_page'),
+     
+ )

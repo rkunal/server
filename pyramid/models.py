@@ -161,10 +161,8 @@ class AppTOC(MPTTModel):
             slugs = []
             for t in self.get_ancestors(include_self=True):
                 slugs.append(t.slug.encode("utf-8"))
-            if self.app.lang == NyaayaApp.HINDI:
-                return reverse('app_page_lang', args=['/'.join(slugs)])
-            else:
-                return reverse('app_page', args=['/'.join(slugs)])
+            
+            return reverse('app_page', args=['/'.join(slugs)])
 
     def get_next_toc(self):
         qualified_tocs = self.get_root().get_family().exclude(is_deleted=True).exclude(pyramid_doc__isnull=True)

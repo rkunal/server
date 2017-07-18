@@ -117,10 +117,8 @@ class CatalogueByCategories(APIView):
 
 
 class AppPage(viewsets.ViewSet):
-    def getlang(self,request,toc_slug, lang=None):
-        return self.list(request,toc_slug,lang)
 
-    def list(self, request, toc_slug, lang=None):
+    def list(self, request, toc_slug):
         """
         Return information for a nav in app page.
         """

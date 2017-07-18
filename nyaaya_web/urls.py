@@ -14,10 +14,6 @@ urlpatterns = [
         views.catalogue_for_jurisdiction_for_category, name='catalogue-for-jurisdiction-category'),
     url(r'^catalogue/jurisdiction/(?P<locality>[0-9]+)/(?P<jurisdiction_slug>[\w-]+)/$', views.catalogue_for_jurisdiction, name='catalogue-for-jurisdiction'),
     url(r'^guides/$', views.guides, name='guides'),
-    url(r'^hi/law-explainers/$', views.law_explainers, name='law-explainers-hin'),
-    url(r'^law-explainers/$', views.law_explainers, name='law-explainers'),
     url(r'^law-explainers/(?P<doc_id>[0-9]+)/(?P<slug>[\w-]+)/$', views.guide_intro, name='guide-intro'),
-    url(r'^hi/(?P<toc_slug>[\-a-z0-9].+)/$', views.apps_lang, name='app_page_lang'),
-    url(r'^(?P<toc_slug>[\-a-z0-9].+)/$', views.apps, name='app_page'),
     url(r'^law/(?P<doc_id>[0-9]+)/(?P<doc_title>[\w-]+)/$', views.ldp, name='ldp'),
 ]
