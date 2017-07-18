@@ -1,10 +1,12 @@
 from django.conf.urls import url
 from . import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^traffic-fine/$', views.traffic_fine, name='traffic-fine'),
     url(r'^traffic-fine/(?P<slug>[\w-]+)/$', views.traffic_fine, name='traffic-fine'),
+    url(r'^catalogue/$', RedirectView.as_view(pattern_name='catalogue-by-category', permanent=False)),
     url(r'^catalogue/category/$', views.catalogue_by_category, name='catalogue-by-category'),
     url(r'^catalogue/category/(?P<category_id>[0-9]+)/(?P<category_slug>[\w-]+)/$', views.catalogue_for_category, name='catalogue-for-category'),
     url(r'^catalogue/jurisdiction/$', views.catalogue_by_jurisdiction, name='catalogue-by-jurisdiction'),
