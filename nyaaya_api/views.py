@@ -17,7 +17,7 @@ from law.models import *
 from rest_framework import generics
 from seo.views import SeoManager
 from django.db.models import CharField, Count, Value as V
-
+from rest_framework.exceptions import NotFound
 from law.serializers import *
 from law.catalogue import *
 from pyramid.serializers import *
@@ -136,7 +136,7 @@ class AppPage(viewsets.ViewSet):
             appTOC = AppTOC.objects.get(slug=toc_slugs[0],app__lang=langChoice,parent=None)
             nyaayaApp = appTOC.app
         except AppTOC.DoesNotExist:
-            raise Http404
+            raise NotFound
 
         selectedTOC = None
         if num_slugs == 1:
@@ -154,9 +154,9 @@ class AppPage(viewsets.ViewSet):
                     break
 
         if selectedTOC is None:
-            raise Http404
+            raise NotFound
         elif selectedTOC.pyramid_doc is None:
-            raise Http404
+            raise NotFound
 
         """
         adds related content data to the API response
@@ -244,7 +244,7 @@ class LDPView(viewsets.ViewSet):
             document_id = webDoc.document_id
             title = webDoc.short_title
         except WebDoc.DoesNotExist:
-            raise Response(status=status.HTTP_404_NOT_FOUND)
+            raise NotFound
 
         try:
             webDocXmlData = WebDocXmlData.objects.get(webdoc=webDoc)
@@ -277,7 +277,7 @@ class LDPView(viewsets.ViewSet):
                     }
                     nav_toc.append(t)
         except WebDocXmlData.DoesNotExist:
-            raise Response(status=status.HTTP_404_NOT_FOUND)
+            raise NotFound
 
         try:
             intro  = DocExplainerBlock.objects.get(webdoc=webDoc,section_id='intro')

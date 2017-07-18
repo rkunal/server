@@ -155,7 +155,11 @@ def guide_intro(request, doc_id, slug=None):
 
 def apps(request,toc_slug=None):
     seo = {}
-    appResponse = AppPage.as_view({'get': 'list'})(request,toc_slug).render().content
+    appResponse = AppPage.as_view({'get': 'list'})(request,toc_slug).render()
+    if appResponse.status_code==404:
+            raise Http404
+    appResponse =appResponse.content
+
     if appResponse is  None or not len(appResponse):
         raise Http404("Not Found")
     try:
@@ -166,7 +170,10 @@ def apps(request,toc_slug=None):
     return render(request, 'nyaaya_web/index.html', {'SHAREDDATA': json.dumps(shared_data), 'seo': seo})
 
 def ldp(request, doc_id=None, doc_title=None):
-    ldp_response = LDPView.as_view({'get': 'get'})(request, doc_id).render().content
+    ldp_response = LDPView.as_view({'get': 'get'})(request, doc_id).render()
+    if ldp_response.status_code==404:
+        raise Http404
+    ldp_response =ldp_response.content
     seo = {}
     try:
         shared_data = json.loads(ldp_response)
@@ -175,3 +182,15 @@ def ldp(request, doc_id=None, doc_title=None):
         shared_data = {}
 
     return render(request, 'nyaaya_web/index.html', {'SHAREDDATA': json.dumps(shared_data), 'seo': seo})
+
+
+def blog(request):
+    try:
+        appTOC = AppTOC.objects.get(slug='blog',parent=None)
+        nextToc = appTOC.get_next_toc()
+        if nextToc is None:
+            raise Http404
+        else:
+            return redirect(nextToc.get_absolute_url())
+    except AppTOC.DoesNotExist:
+        raise Http404

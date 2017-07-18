@@ -110,7 +110,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
     'DEFAULT_VERSION' : '1.0',
-    'ALLOWED_VERSIONS' : ('1.0')
+    'ALLOWED_VERSIONS' : ('1.0'),
+    'EXCEPTION_HANDLER': 'nyaaya_api.exceptions.BaseExceptionHandler'
 }
 
 
